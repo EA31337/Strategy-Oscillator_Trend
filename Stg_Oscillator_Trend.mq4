@@ -10,4 +10,4 @@
  */
 
 // Includes the main code.
-#include "Stg_Oscillator.mq5"
+#include "Stg_Oscillator_Trend.mq5"
