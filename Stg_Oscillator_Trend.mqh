@@ -44,7 +44,7 @@ INPUT int Oscillator_Trend_SignalOpenBoostMethod = 0;    // Signal open boost me
 INPUT int Oscillator_Trend_SignalCloseMethod = 0;        // Signal close method
 INPUT int Oscillator_Trend_SignalCloseFilter = 32;       // Signal close filter (-127-127)
 INPUT float Oscillator_Trend_SignalCloseLevel = 0;       // Signal close level
-INPUT int Oscillator_Trend_PriceStopMethod = 0;          // Price limit method
+INPUT int Oscillator_Trend_PriceStopMethod = 1;          // Price limit method
 INPUT float Oscillator_Trend_PriceStopLevel = 2;         // Price limit level
 INPUT int Oscillator_Trend_TickFilterMethod = 32;        // Tick filter method (0-255)
 INPUT float Oscillator_Trend_MaxSpread = 4.0;            // Max spread to trade (in pips)
@@ -324,6 +324,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_AC_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_AC(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_AC(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_AD:  // AD
@@ -332,6 +334,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_AD_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_AD(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_AD(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_AO:  // AO
@@ -340,6 +344,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_Awesome_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_AO(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_AO(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_ATR:  // ATR
@@ -348,6 +354,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_ATR_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_ATR(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_ATR(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_BEARS:  // Bears
@@ -358,6 +366,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_BearsPower_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_BearsPower(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_BearsPower(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_BULLS:  // Bulls
@@ -368,6 +378,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_BullsPower_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_BullsPower(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_BullsPower(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_BWMFI:  // BWMFI
@@ -376,6 +388,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_BWMFI_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_BWMFI(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_BWMFI(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_CCI:  // CCI
@@ -385,6 +399,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_CCI_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_CCI(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_CCI(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_CHO:  // Chaikin (CHO)
@@ -395,6 +411,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_CHO_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_CHO(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_CHO(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_CHV:  // Chaikin Volatility (CHV)
@@ -404,6 +422,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_CHV_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_CHV(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_CHV(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_DEMARKER:  // DeMarker
@@ -413,6 +433,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_DeMarker_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_DeMarker(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_DeMarker(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_MFI:  // MFI
@@ -422,6 +444,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_MFI_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_MFI(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_MFI(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_MOM:  // MOM
@@ -432,6 +456,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_Momentum_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_Momentum(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_Momentum(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_OBV:  // OBV
@@ -440,6 +466,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_OBV_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_OBV(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_OBV(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_PVT:  // PVT
@@ -449,6 +477,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_PVT_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_PriceVolumeTrend(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_PriceVolumeTrend(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_ROC:  // ROC
@@ -459,6 +489,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_ROC_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_RateOfChange(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_RateOfChange(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_RSI:  // RSI
@@ -468,6 +500,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_RSI_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_RSI(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_RSI(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_STDDEV:  // StdDev
@@ -479,6 +513,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_StdDev_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_StdDev(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_StdDev(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_STOCH:  // Stochastic
@@ -490,6 +526,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_Stochastic_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_Stochastic(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_Stochastic(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_TRIX:  // TRIX
@@ -499,6 +537,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_TRIX_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_TRIX(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_TRIX(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_UO:  // UO
@@ -511,6 +551,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_UO_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_UltimateOscillator(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_UltimateOscillator(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_WAD:  // Williams' AD
@@ -519,6 +561,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_WAD_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_WilliamsAD(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_WilliamsAD(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_WPR:  // WPR
@@ -527,6 +571,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_WPR_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_WPR(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_WPR(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_VOL:  // Volumes
@@ -535,6 +581,8 @@ class Stg_Oscillator_Trend : public Strategy {
         _indi_params.SetDataSourceType(::Oscillator_Trend_Indi_VOL_SourceType);
         _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
         SetIndicator(new Indi_Volumes(_indi_params), ::Oscillator_Trend_Type);
+        _indi_params.SetTf(PERIOD_D1);
+        SetIndicator(new Indi_Volumes(_indi_params), ::Oscillator_Trend_Type + 1);
         break;
       }
       case STG_OSCILLATOR_TREND_TYPE_0_NONE:  // (None)
@@ -544,25 +592,65 @@ class Stg_Oscillator_Trend : public Strategy {
   }
 
   /**
+   * Gets price stop value.
+   */
+  float PriceStop(ENUM_ORDER_TYPE _cmd, ENUM_ORDER_TYPE_VALUE _mode, int _method = 0, float _level = 0.0f,
+                  short _bars = 4) {
+    float _result = 0;
+    if (_method == 0) {
+      // Ignores calculation when method is 0.
+      return (float)_result;
+    }
+    float _trade_dist = trade.GetTradeDistanceInValue();
+    int _count = (int)fmax(fabs(_level), fabs(_method));
+    int _direction = Order::OrderDirection(_cmd, _mode);
+    uint _ishift = 0;
+    Chart *_chart = trade.GetChart();
+    IndicatorBase *_indi = GetIndicator(::Oscillator_Trend_Type);
+    IndicatorBase *_indi_trend = GetIndicator(::Oscillator_Trend_Type + 1);
+    float _level_pips = (float)(_level * _chart.GetPipSize());
+    float _value_high = _indi_trend.GetValuePrice<float>(_bars, 0, PRICE_HIGH);
+    float _value_low = _indi_trend.GetValuePrice<float>(_bars, 0, PRICE_LOW);
+
+    switch (_mode) {
+      case ORDER_TYPE_SL:
+        _result = (_direction > 0 ? _value_high : _value_low) - _level_pips;
+        break;
+      case ORDER_TYPE_TP:
+        _result = (_direction > 0 ? _value_high : _value_low) + _level_pips;
+        break;
+    }
+    return (float)_result;
+  }
+
+  /**
    * Check strategy's opening signal.
    */
-  bool SignalOpen(ENUM_ORDER_TYPE _cmd, int _method, float _level = 0.0f, int _shift = 0) {
+  bool SignalOpen(ENUM_ORDER_TYPE _cmd, int _method = 0, float _level = 0.0f, int _shift = 0) {
+    Chart *_chart = trade.GetChart();
     IndicatorBase *_indi = GetIndicator(::Oscillator_Trend_Type);
+    IndicatorBase *_indi_trend = GetIndicator(::Oscillator_Trend_Type + 1);
+    uint _ishift = _shift;  // @todo: _indi.GetShift();
     // uint _ishift = _indi.GetShift();
+    // bool _result = _indi.GetFlag(INDI_ENTRY_FLAG_IS_VALID, _shift); // @fixme
     bool _result = Oscillator_Trend_Type != STG_OSCILLATOR_TREND_TYPE_0_NONE && IsValidEntry(_indi, _shift);
     if (!_result) {
       // Returns false when indicator data is not valid.
       return false;
     }
+    float _level_pips = (float)(_level * _chart.GetPipSize());
+    _result &= fabs(_indi_trend[_ishift][0] - _indi_trend[_ishift + 1][0]) > _level_pips;
     switch (_cmd) {
       case ORDER_TYPE_BUY:
         // Buy signal.
         _result &= _indi.IsIncreasing(1, 0, _shift);
-        _result &= _indi.IsIncByPct(_level, 0, _shift, 2);
+        _result &= _indi_trend.IsIncreasing(1, 0, _shift);
+        _result &= (_indi_trend[_ishift][0] - _indi_trend[_ishift + 1][0]) > _level_pips;
         if (_result && _method != 0) {
-          if (METHOD(_method, 0)) _result &= _indi.IsDecreasing(1, 0, _shift + 1);
-          if (METHOD(_method, 1)) _result &= _indi.IsIncreasing(4, 0, _shift + 3);
-          if (METHOD(_method, 2))
+          if (METHOD(_method, 0)) _result &= _indi.IsIncreasing(1, 0, _shift + 1);
+          if (METHOD(_method, 1)) _result &= _indi_trend.IsIncreasing(1, 0, _shift + 1);
+          if (METHOD(_method, 2)) _result &= _indi.IsIncreasing(4, 0, _shift + 3);
+          if (METHOD(_method, 3))
             _result &= fmax4(_indi[_shift][0], _indi[_shift + 1][0], _indi[_shift + 2][0], _indi[_shift + 3][0]) ==
                        _indi[_shift][0];
         }
@@ -570,11 +658,12 @@ class Stg_Oscillator_Trend : public Strategy {
       case ORDER_TYPE_SELL:
         // Sell signal.
         _result &= _indi.IsDecreasing(1, 0, _shift);
-        _result &= _indi.IsDecByPct(_level, 0, _shift, 2);
+        _result &= _indi_trend.IsDecreasing(1, 0, _shift);
         if (_result && _method != 0) {
-          if (METHOD(_method, 0)) _result &= _indi.IsIncreasing(1, 0, _shift + 1);
-          if (METHOD(_method, 1)) _result &= _indi.IsDecreasing(4, 0, _shift + 3);
-          if (METHOD(_method, 2))
+          if (METHOD(_method, 0)) _result &= _indi.IsDecreasing(1, 0, _shift + 1);
+          if (METHOD(_method, 1)) _result &= _indi_trend.IsDecreasing(1, 0, _shift + 1);
+          if (METHOD(_method, 2)) _result &= _indi.IsDecreasing(4, 0, _shift + 3);
+          if (METHOD(_method, 3))
             _result &= fmin4(_indi[_shift][0], _indi[_shift + 1][0], _indi[_shift + 2][0], _indi[_shift + 3][0]) ==
                        _indi[_shift][0];
         }
