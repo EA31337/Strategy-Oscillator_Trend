@@ -6,7 +6,7 @@
 
 /**
  * @file
- * Implements Oscillator strategy.
+ * Implements Oscillator Trend strategy.
  */
 
 // Includes the main code.
