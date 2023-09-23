@@ -49,8 +49,8 @@ INPUT float Oscillator_Trend_PriceStopLevel = 2;         // Price limit level
 INPUT int Oscillator_Trend_TickFilterMethod = 32;        // Tick filter method (0-255)
 INPUT float Oscillator_Trend_MaxSpread = 4.0;            // Max spread to trade (in pips)
 INPUT short Oscillator_Trend_Shift = 0;                  // Shift
-INPUT float Oscillator_Trend_OrderCloseLoss = 120;       // Order close loss
-INPUT float Oscillator_Trend_OrderCloseProfit = 120;     // Order close profit
+INPUT float Oscillator_Trend_OrderCloseLoss = 200;       // Order close loss
+INPUT float Oscillator_Trend_OrderCloseProfit = 200;     // Order close profit
 INPUT int Oscillator_Trend_OrderCloseTime = 2880;        // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("Oscillator Trend strategy: AC oscillator params");
 INPUT int Oscillator_Trend_Indi_AC_Shift = 0;                                      // Shift
