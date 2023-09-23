@@ -33,17 +33,17 @@ enum ENUM_STG_OSCILLATOR_TREND_TYPE {
 
 // User input params.
 INPUT_GROUP("Oscillator Trend strategy: main strategy params");
-INPUT ENUM_STG_OSCILLATOR_TREND_TYPE Oscillator_Trend_Type = STG_OSCILLATOR_TREND_TYPE_CCI;  // Oscillator type
+INPUT ENUM_STG_OSCILLATOR_TREND_TYPE Oscillator_Trend_Type = STG_OSCILLATOR_TREND_TYPE_ATR;  // Oscillator type
 INPUT_GROUP("Oscillator Trend strategy: strategy params");
 INPUT float Oscillator_Trend_LotSize = 0;                // Lot size
-INPUT int Oscillator_Trend_SignalOpenMethod = 6;         // Signal open method
-INPUT float Oscillator_Trend_SignalOpenLevel = 0;        // Signal open level
+INPUT int Oscillator_Trend_SignalOpenMethod = 14;        // Signal open method
+INPUT float Oscillator_Trend_SignalOpenLevel = 10.0f;    // Signal open level
 INPUT int Oscillator_Trend_SignalOpenFilterMethod = 32;  // Signal open filter method
 INPUT int Oscillator_Trend_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
 INPUT int Oscillator_Trend_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT int Oscillator_Trend_SignalCloseMethod = 0;        // Signal close method
+INPUT int Oscillator_Trend_SignalCloseMethod = 14;       // Signal close method
 INPUT int Oscillator_Trend_SignalCloseFilter = 32;       // Signal close filter (-127-127)
-INPUT float Oscillator_Trend_SignalCloseLevel = 0;       // Signal close level
+INPUT float Oscillator_Trend_SignalCloseLevel = 10.0f;   // Signal close level
 INPUT int Oscillator_Trend_PriceStopMethod = 1;          // Price limit method
 INPUT float Oscillator_Trend_PriceStopLevel = 2;         // Price limit level
 INPUT int Oscillator_Trend_TickFilterMethod = 32;        // Tick filter method (0-255)
@@ -639,33 +639,36 @@ class Stg_Oscillator_Trend : public Strategy {
       return false;
     }
     float _level_pips = (float)(_level * _chart.GetPipSize());
-    _result &= fabs(_indi_trend[_ishift][0] - _indi_trend[_ishift + 1][0]) > _level_pips;
+    float _value_range =
+        _indi.GetValuePrice<float>(2, _shift, PRICE_HIGH) - _indi.GetValuePrice<float>(2, _shift, PRICE_LOW);
+    _result &= _value_range > _level_pips;
     switch (_cmd) {
       case ORDER_TYPE_BUY:
         // Buy signal.
-        _result &= _indi.IsIncreasing(1, 0, _shift);
-        _result &= _indi_trend.IsIncreasing(1, 0, _shift);
-        _result &= (_indi_trend[_ishift][0] - _indi_trend[_ishift + 1][0]) > _level_pips;
+        _result &= _indi.IsIncreasing(1, 0, _ishift);
+        _result &= _indi_trend.IsIncreasing(1, 0, _ishift);
         if (_result && _method != 0) {
-          if (METHOD(_method, 0)) _result &= _indi.IsIncreasing(1, 0, _shift + 1);
-          if (METHOD(_method, 1)) _result &= _indi_trend.IsIncreasing(1, 0, _shift + 1);
-          if (METHOD(_method, 2)) _result &= _indi.IsIncreasing(4, 0, _shift + 3);
-          if (METHOD(_method, 3))
-            _result &= fmax4(_indi[_shift][0], _indi[_shift + 1][0], _indi[_shift + 2][0], _indi[_shift + 3][0]) ==
-                       _indi[_shift][0];
+          if (METHOD(_method, 0)) _result &= _indi.IsIncreasing(1, 0, _ishift + 1);
+          if (METHOD(_method, 1)) _result &= _indi_trend.IsIncreasing(1, 0, _ishift + 1);
+          if (METHOD(_method, 2)) _result &= _indi_trend.IsIncreasing(1, 0, _ishift + 2);
+          if (METHOD(_method, 3)) _result &= _indi.IsIncreasing(4, 0, _ishift + 1);
+          if (METHOD(_method, 4))
+            _result &= fmax4(_indi[_ishift][0], _indi[_ishift + 1][0], _indi[_ishift + 2][0], _indi[_ishift + 3][0]) ==
+                       _indi[_ishift][0];
         }
         break;
       case ORDER_TYPE_SELL:
         // Sell signal.
-        _result &= _indi.IsDecreasing(1, 0, _shift);
-        _result &= _indi_trend.IsDecreasing(1, 0, _shift);
+        _result &= _indi.IsDecreasing(1, 0, _ishift);
+        _result &= _indi_trend.IsDecreasing(1, 0, _ishift);
         if (_result && _method != 0) {
-          if (METHOD(_method, 0)) _result &= _indi.IsDecreasing(1, 0, _shift + 1);
-          if (METHOD(_method, 1)) _result &= _indi_trend.IsDecreasing(1, 0, _shift + 1);
-          if (METHOD(_method, 2)) _result &= _indi.IsDecreasing(4, 0, _shift + 3);
-          if (METHOD(_method, 3))
-            _result &= fmin4(_indi[_shift][0], _indi[_shift + 1][0], _indi[_shift + 2][0], _indi[_shift + 3][0]) ==
-                       _indi[_shift][0];
+          if (METHOD(_method, 0)) _result &= _indi.IsDecreasing(1, 0, _ishift + 1);
+          if (METHOD(_method, 1)) _result &= _indi_trend.IsDecreasing(1, 0, _ishift + 1);
+          if (METHOD(_method, 2)) _result &= _indi_trend.IsDecreasing(1, 0, _ishift + 2);
+          if (METHOD(_method, 3)) _result &= _indi.IsDecreasing(4, 0, _ishift + 1);
+          if (METHOD(_method, 4))
+            _result &= fmin4(_indi[_ishift][0], _indi[_ishift + 1][0], _indi[_ishift + 2][0], _indi[_ishift + 3][0]) ==
+                       _indi[_ishift][0];
         }
         break;
     }
