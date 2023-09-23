@@ -33,15 +33,15 @@ enum ENUM_STG_OSCILLATOR_TREND_TYPE {
 
 // User input params.
 INPUT_GROUP("Oscillator Trend strategy: main strategy params");
-INPUT ENUM_STG_OSCILLATOR_TREND_TYPE Oscillator_Trend_Type = STG_OSCILLATOR_TREND_TYPE_ATR;  // Oscillator type
+INPUT ENUM_STG_OSCILLATOR_TREND_TYPE Oscillator_Trend_Type = STG_OSCILLATOR_TREND_TYPE_MOM;  // Oscillator type
 INPUT_GROUP("Oscillator Trend strategy: strategy params");
 INPUT float Oscillator_Trend_LotSize = 0;                // Lot size
-INPUT int Oscillator_Trend_SignalOpenMethod = 14;        // Signal open method
+INPUT int Oscillator_Trend_SignalOpenMethod = 8;         // Signal open method
 INPUT float Oscillator_Trend_SignalOpenLevel = 10.0f;    // Signal open level
 INPUT int Oscillator_Trend_SignalOpenFilterMethod = 32;  // Signal open filter method
 INPUT int Oscillator_Trend_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
 INPUT int Oscillator_Trend_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT int Oscillator_Trend_SignalCloseMethod = 14;       // Signal close method
+INPUT int Oscillator_Trend_SignalCloseMethod = 8;        // Signal close method
 INPUT int Oscillator_Trend_SignalCloseFilter = 32;       // Signal close filter (-127-127)
 INPUT float Oscillator_Trend_SignalCloseLevel = 10.0f;   // Signal close level
 INPUT int Oscillator_Trend_PriceStopMethod = 1;          // Price limit method
@@ -49,9 +49,9 @@ INPUT float Oscillator_Trend_PriceStopLevel = 2;         // Price limit level
 INPUT int Oscillator_Trend_TickFilterMethod = 32;        // Tick filter method (0-255)
 INPUT float Oscillator_Trend_MaxSpread = 4.0;            // Max spread to trade (in pips)
 INPUT short Oscillator_Trend_Shift = 0;                  // Shift
-INPUT float Oscillator_Trend_OrderCloseLoss = 80;        // Order close loss
-INPUT float Oscillator_Trend_OrderCloseProfit = 80;      // Order close profit
-INPUT int Oscillator_Trend_OrderCloseTime = -30;         // Order close time in mins (>0) or bars (<0)
+INPUT float Oscillator_Trend_OrderCloseLoss = 120;       // Order close loss
+INPUT float Oscillator_Trend_OrderCloseProfit = 120;     // Order close profit
+INPUT int Oscillator_Trend_OrderCloseTime = 1440;        // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("Oscillator Trend strategy: AC oscillator params");
 INPUT int Oscillator_Trend_Indi_AC_Shift = 0;                                      // Shift
 INPUT ENUM_IDATA_SOURCE_TYPE Oscillator_Trend_Indi_AC_SourceType = IDATA_BUILTIN;  // Source type
