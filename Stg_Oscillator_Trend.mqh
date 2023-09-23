@@ -51,7 +51,7 @@ INPUT float Oscillator_Trend_MaxSpread = 4.0;            // Max spread to trade 
 INPUT short Oscillator_Trend_Shift = 0;                  // Shift
 INPUT float Oscillator_Trend_OrderCloseLoss = 120;       // Order close loss
 INPUT float Oscillator_Trend_OrderCloseProfit = 120;     // Order close profit
-INPUT int Oscillator_Trend_OrderCloseTime = 1440;        // Order close time in mins (>0) or bars (<0)
+INPUT int Oscillator_Trend_OrderCloseTime = 2880;        // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("Oscillator Trend strategy: AC oscillator params");
 INPUT int Oscillator_Trend_Indi_AC_Shift = 0;                                      // Shift
 INPUT ENUM_IDATA_SOURCE_TYPE Oscillator_Trend_Indi_AC_SourceType = IDATA_BUILTIN;  // Source type
