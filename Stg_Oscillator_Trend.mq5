@@ -1,6 +1,6 @@
 /**
  * @file
- * Implements Oscillator strategy.
+ * Implements Oscillator Trend strategy.
  */
 
 // Includes conditional compilation directives.
@@ -43,12 +43,12 @@ input ENUM_LOG_LEVEL Log_Level = V_INFO;  // Log level.
 input bool Info_On_Chart = true;          // Display info on chart.
 
 // Includes strategy.
-#include "Stg_Oscillator.mqh"
+#include "Stg_Oscillator_Trend.mqh"
 
 // Defines.
-#define ea_name "Strategy Oscillator"
+#define ea_name "Strategy Oscillator Trend"
 #define ea_version "2.000"
-#define ea_desc "Strategy based on selected oscillator-type multi-valued indicators."
+#define ea_desc "Strategy implements main trend signals based on oscillator-type single-valued indicators."
 #define ea_link "https://github.com/EA31337/Strategy-Oscillator"
 #define ea_author "EA31337 Ltd"
 
@@ -75,7 +75,7 @@ int OnInit() {
   bool _result = true;
   EAParams ea_params(__FILE__, Log_Level);
   ea = new EA(ea_params);
-  _result &= ea.StrategyAdd<Stg_Oscillator>(Active_Tfs);
+  _result &= ea.StrategyAdd<Stg_Oscillator_Trend>(Active_Tfs);
   return (_result ? INIT_SUCCEEDED : INIT_FAILED);
 }
 
